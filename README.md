@@ -58,3 +58,5 @@ Sign out and Sign in after installation to make sure the system environment vari
 5. Click OK and start it with play.
 
 After all, you can test your working laravel demo page by opening the "index.php" file in folder "public".
+If you want to continue learning laravel you can continue at this playlist from the second video from timestamp 13:00
+https://www.youtube.com/watch?v=H3uRXvwXz1o&list=PLillGF-RfqbYhQsN5WMXy6VsDMKGadrJ-&index=2
