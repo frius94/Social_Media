@@ -60,3 +60,4 @@ Sign out and Sign in after installation to make sure the system environment vari
 After all, you can test your working laravel demo page by opening the "index.php" file in folder "public".
 If you want to continue learning laravel you can continue at this playlist from the second video from timestamp 13:00
 https://www.youtube.com/watch?v=H3uRXvwXz1o&list=PLillGF-RfqbYhQsN5WMXy6VsDMKGadrJ-&index=2
+For further development i recommend to install the official PHPStorm Laravel Plugin. You can find it under Settings -> Plugins.
