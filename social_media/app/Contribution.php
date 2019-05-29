@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contribution extends Model
 {
-    //
+    public $primaryKey = 'id';
+
 }

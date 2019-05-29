@@ -13,7 +13,7 @@ class ContributionController extends Controller
      */
     public function index()
     {
-        //
+        return '<h1>HI</h1>';
     }
 
     /**
