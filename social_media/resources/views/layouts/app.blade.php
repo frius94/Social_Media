@@ -13,7 +13,9 @@
             <a class="navbar-brand" href='/'>
                 <img src="media/logo.png" class="img-fluid" width="40" height="40" alt="TBZ-SM">
             </a>
-            <a class="nav-item text-white text-decoration-none" href=''>About</a>
+            <a class="nav-item text-white text-decoration-none" href='/feed'>Feed</a>
+            <a class="nav-item text-white text-decoration-none" href='/profile'>My profile</a>
+            <a class="nav-item text-white text-decoration-none" href='/about'>About</a>
         </div>
     </div>
 </nav>

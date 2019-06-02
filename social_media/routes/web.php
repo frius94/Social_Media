@@ -13,3 +13,4 @@
 
 Route::get('/', 'PagesController@index');
 Route::get('/profile', 'PagesController@profile');
+Route::get('/feed', 'PagesController@feed');

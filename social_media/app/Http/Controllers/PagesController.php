@@ -25,4 +25,11 @@ class PagesController extends Controller
         ];
         return view('pages.profile', with($data));
     }
+
+    public function feed()
+    {
+        $data = [
+        ];
+        return view('pages.feed', with($data));
+    }
 }
