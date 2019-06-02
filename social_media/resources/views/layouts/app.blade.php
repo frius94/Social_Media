@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>{{config('app.name', 'TBZ-SM')}}</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -10,10 +10,10 @@
 <nav class="navbar navbar-dark bg-primary">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href='{{$index}}'>
+            <a class="navbar-brand" href='/'>
                 <img src="media/logo.png" class="img-fluid" width="40" height="40" alt="TBZ-SM">
             </a>
-            <a class="nav-item text-white text-decoration-none" href=''>{{$about}}</a>
+            <a class="nav-item text-white text-decoration-none" href=''>About</a>
         </div>
     </div>
 </nav>
@@ -28,7 +28,7 @@
 <!-- footer -->
 <footer class="container text-center">
     <ul class="nav nav-pills pull-right">
-        <li>{{$credits}}</li>
+        <li>Ⓒ TBZ-SM by Chris O'Connor & Umut Savas</li>
     </ul>
 </footer>
 <!-- ./footer -->

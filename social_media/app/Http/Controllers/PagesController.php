@@ -18,4 +18,11 @@ class PagesController extends Controller
         ];
         return view('pages.index', with($data));
     }
+
+    public function profile()
+    {
+        $data = [
+        ];
+        return view('pages.profile', with($data));
+    }
 }
