@@ -3,29 +3,39 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{config('app.name', 'TBZ-SM')}}</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'TBZ-SM') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-
-    @include('inc.navbar')
-
-<!-- main -->
-<main class="container">
-    @yield('content')
-</main>
-<!-- ./main -->
-
-    <!-- <script type='application/javascript' src='{{asset('js/app.js')}}'></script> -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    <div id="app">
+        @include('inc.navbar')
+        <!-- main -->
+        <main class="container">
+            @yield('content')
+        </main>
+        <!-- ./main -->
+    </div>
 </body>
 <!-- footer -->
-<footer class="container text-center">
-    <ul class="nav nav-pills pull-right">
-        <li>Ⓒ TBZ-SM by Chris O'Connor & Umut Savas</li>
-    </ul>
+<footer class="page-footer font-small blue pt-4">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-4">© 2019 Copyright:
+        <a href="#"> TBZ-SM </a>by Chris O'Connor & Umut Savas
+    </div>
+    <!-- Copyright -->
 </footer>
 <!-- ./footer -->
 </html>
