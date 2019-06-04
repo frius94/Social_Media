@@ -14,11 +14,17 @@ class CreatePersonHasPeopleTable extends Migration
     public function up()
     {
         Schema::create('person_has_people', function (Blueprint $table) {
-            $table->integer('person1');
-            $table->integer('person2');
+            $table->integer('person1')->unsigned();
+            $table->integer('person2')->unsigned();
             $table->timestamps();
             $table->engine = 'InnoDB';
         });
+
+	    Schema::table('person_has_people', function (Blueprint $table) {
+		    $table->foreign('person1')->references('id')->on('people');
+		    $table->foreign('person2')->references('id')->on('people');
+	    });
+
     }
 
     /**
