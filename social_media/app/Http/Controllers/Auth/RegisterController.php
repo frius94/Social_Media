@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\City;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -53,9 +54,10 @@ class RegisterController extends Controller
 	        'lastname'  => ['required', 'string', 'max:255'],
 	        'password'  => ['required', 'string', 'min:6', 'confirmed'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
-	        'birthDate' => ['required', 'date', 'date_format:Y-m-d'],
+	        'birthDate' => ['required', 'date'],
 	        'street'    => ['required', 'string', 'max:255'],
 	        'mobile'    => ['required', 'numeric', 'digits_between:9,13'],
+	        'plz'       => ['required', 'numeric', 'digits:4'],
 
         ]);
     }
@@ -68,15 +70,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+    	$city = City::registerUser([
+    		'plz' => $data['plz'],
+		    'city' => $data['city'],
+	    ]);
+
+	    return User::create([
             'firstname' => $data['firstname'],
-	        'lastname' => $data['lastname'],
+	        'lastname'  => $data['lastname'],
 	        'password'  => Hash::make($data['password']),
             'email'     => $data['email'],
 	        'birthDate' => $data['birthDate'],
 	        'street'    => $data['street'],
 	        'mobile'    => $data['mobile'],
+		    'cities_id' => $city['id'],
 
         ]);
+
     }
 }

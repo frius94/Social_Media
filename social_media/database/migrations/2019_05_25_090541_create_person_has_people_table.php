@@ -20,11 +20,6 @@ class CreatePersonHasPeopleTable extends Migration
             $table->engine = 'InnoDB';
         });
 
-	    Schema::table('person_has_people', function (Blueprint $table) {
-		    $table->foreign('person1')->references('id')->on('people');
-		    $table->foreign('person2')->references('id')->on('people');
-	    });
-
     }
 
     /**

@@ -22,11 +22,6 @@ class CreateContributionsTable extends Migration
             $table->engine = 'InnoDB';
         });
 
-        Schema::table('contributions', function (Blueprint $table) {
-            $table->foreign('people_id')->references('id')->on('people');
-        });
-
-        DB::statement("ALTER TABLE contributions ADD media MEDIUMBLOB");
     }
 
     /**
