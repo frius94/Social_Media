@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <h1>{{$id}}</h1>
+    <!-- <h1>{{$user->id}}</h1> -->
     <div class="row my-5">
         <div class="col-md-3">
             <!-- edit profile -->

@@ -36,7 +36,7 @@ class PagesController extends Controller
 
     	$user = User::find($id);
 
-        return view('pages.profile')->with('id', $id);
+        return view('pages.profile')->with('user', $user);
     }
 
 }
