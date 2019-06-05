@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
     public function index()
     {
         $data = [
@@ -19,10 +30,13 @@ class PagesController extends Controller
         return view('pages.index', with($data));
     }
 
-    public function profile()
+
+    public function profile($id)
     {
-        $data = [
-        ];
-        return view('pages.profile', with($data));
+
+    	$user = User::find($id);
+
+        return view('pages.profile')->with('id', $id);
     }
+
 }

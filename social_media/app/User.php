@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'password', 'email', 'birthDate', 'street', 'mobile', 'cities_id',
+        'firstname', 'lastname', 'password', 'email', 'birthDate', 'street', 'mobile', 'cities_id', 'schoolClasses_id',
     ];
 
     /**
@@ -39,6 +39,10 @@ class User extends Authenticatable
 
     public function city() {
     	return $this->hasOne('App\City');
+    }
+
+    public function schoolClass() {
+    	return $this->hasOne('App\SchoolClass');
     }
 
 }

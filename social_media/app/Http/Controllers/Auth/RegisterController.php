@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\SchoolClass;
 use App\User;
 use App\City;
 use App\Http\Controllers\Controller;
@@ -58,6 +59,8 @@ class RegisterController extends Controller
 	        'street'    => ['required', 'string', 'max:255'],
 	        'mobile'    => ['required', 'numeric', 'digits_between:9,13'],
 	        'plz'       => ['required', 'numeric', 'digits:4'],
+	        'city'      => ['required', 'string', 'max:255'],
+	        'classname' => ['required', 'string', 'max:255'],
 
         ]);
     }
@@ -72,19 +75,22 @@ class RegisterController extends Controller
     {
 
     	$city = City::registerUser([
-    		'plz' => $data['plz'],
+    		'plz'  => $data['plz'],
 		    'city' => $data['city'],
 	    ]);
 
+    	$class = SchoolClass::registerUser($data['classname']);
+
 	    return User::create([
-            'firstname' => $data['firstname'],
-	        'lastname'  => $data['lastname'],
-	        'password'  => Hash::make($data['password']),
-            'email'     => $data['email'],
-	        'birthDate' => $data['birthDate'],
-	        'street'    => $data['street'],
-	        'mobile'    => $data['mobile'],
-		    'cities_id' => $city['id'],
+            'firstname'        => $data['firstname'],
+	        'lastname'         => $data['lastname'],
+	        'password'         => Hash::make($data['password']),
+            'email'            => $data['email'],
+	        'birthDate'        => $data['birthDate'],
+	        'street'           => $data['street'],
+	        'mobile'           => $data['mobile'],
+		    'cities_id'        => $city['id'],
+		    'schoolClasses_id' => $class['id'],
 
         ]);
 
