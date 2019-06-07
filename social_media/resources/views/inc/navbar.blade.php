@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
 	<div class="container">
 		<a class="navbar-brand mr-5" href="/">
-			<img src="http://localhost/Social_Media/social_media/public/media/logo.png" class="img-fluid" width="40" height="40" alt="TBZ-SM">
+			<img src="<?= url('media/logo.png'); ?>" class="img-fluid" width="40" height="40" alt="TBZ-SM">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
 			<span class="navbar-toggler-icon"></span>
