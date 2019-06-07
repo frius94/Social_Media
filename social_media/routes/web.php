@@ -12,4 +12,10 @@
 */
 
 Route::get('/', 'PagesController@index');
-Route::get('/profile', 'PagesController@profile');
+
+Route::get('/profile/{id}', 'PagesController@profile');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
