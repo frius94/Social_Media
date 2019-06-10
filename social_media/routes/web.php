@@ -13,7 +13,7 @@
 
 Route::get('/', 'PagesController@index');
 
-Route::get('/profile/{id}', 'PagesController@profile');
+Route::get('/profile/{id}', 'ProfileController@show');
 
 Auth::routes();
 

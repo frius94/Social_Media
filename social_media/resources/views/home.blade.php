@@ -18,17 +18,7 @@
 
             <!-- timeline -->
             <div>
-                <!-- post -->
-                <div class="card">
-                    <div class="card-body">
-                        <p>Hello people! This is my first FaceClone post. Hurray!!!</p>
-                    </div>
-                    <div class="card-footer">
-                        <span>posted 2017-5-27 20:45:01 by nicholaskajoh</span>
-                        <span class="pull-right"><a class="text-danger" href="#">[delete]</a></span>
-                    </div>
-                </div>
-                <!-- ./post -->
+                @include('inc.contributions')
             </div>
             <!-- ./timeline -->
         </div>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Contribution;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -19,24 +21,6 @@ class PagesController extends Controller
 
     public function index()
     {
-        $data = [
-            'title' => 'Welcome to TBZ-SM',
-            'about' => 'About',
-            'login' => 'Login to start communicating with other students',
-            'register' => 'Don\'t have an account yet? Register!',
-            'credits' => 'Ⓒ TBZ-SM by Chris O\'Connor & Umut Savas',
-            'index' => url()->current(),
-        ];
-        return view('pages.index', with($data));
+        return view('pages.index');
     }
-
-
-    public function profile($id)
-    {
-
-    	$user = User::find($id);
-
-        return view('pages.profile')->with('user', $user);
-    }
-
 }
