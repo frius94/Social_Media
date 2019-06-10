@@ -61,12 +61,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4>Friends</h4>
-                    <ul>
-                        <li>
-                            <a href="#">peterpan</a>
-                            <a class="text-danger" href="#">[unfriend]</a>
-                        </li>
-                    </ul>
+                    @include('inc.friendlist')
                 </div>
             </div>
             <!-- ./friends -->

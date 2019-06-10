@@ -27,11 +27,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $friends = [];
-        $friendsID = Person_has_person::select('person2')->where('person1', Auth::user()->id)->get();
-        foreach ($friendsID as $friendID)
-            $friends[] = User::find($friendID->person2);
-
-        return view('home')->with('friends', $friends);
+        return view('home');
     }
 }
