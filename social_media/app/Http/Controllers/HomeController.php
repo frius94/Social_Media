@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Contribution;
+use App\Person_has_person;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller

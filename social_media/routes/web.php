@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/removeFriend/{id1}/{id2}', 'Person_has_personController@destroy');
