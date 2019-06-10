@@ -41,6 +41,7 @@ class HomeController extends Controller
 
         return view('home')
             ->with('contributions', $contributions)
-            ->with('contributionUsers', $contributionUsers);
+            ->with('contributionUsers', $contributionUsers)
+            ->with('profilePicture', Auth::user()->profile_picture);
     }
 }
