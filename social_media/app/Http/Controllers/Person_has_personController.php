@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Person_has_person;
 use Illuminate\Http\Request;
 
 class Person_has_personController extends Controller
@@ -71,14 +72,16 @@ class Person_has_personController extends Controller
 		//
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param $id1
+     * @param $id2
+     * @return \Illuminate\Http\Response
+     */
+	public function destroy($id1, $id2)
 	{
-		//
+	    Person_has_person::where('person1', $id1)->where('person2', $id2)->delete();
+	    return redirect('home');
 	}
 }
