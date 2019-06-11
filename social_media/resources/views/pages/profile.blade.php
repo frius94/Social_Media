@@ -28,11 +28,12 @@
             <!-- user profile -->
             <div class="media">
                 <div class="media-left">
-                    <img src="img/my_avatar.png" class="media-object" style="width: 128px; height: 128px;">
+                    <img src="{{$user->profile_picture}}" class="media-object"
+                         style="width: 128px; height: auto;">
                 </div>
                 <div class="media-body ml-4">
-                    <h2 class="media-heading">Peter Meier</h2>
-                    <p>Status: I love to code!, Location: Nigeria</p>
+                    <h2 class="media-heading">{{$user->firstname . ' ' . $user->lastname}}</h2>
+                    <p>Status: {{$user->status}}</p>
                 </div>
             </div>
             <!-- user profile -->
