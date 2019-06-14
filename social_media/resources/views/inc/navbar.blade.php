@@ -1,4 +1,9 @@
-<nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
+<nav class="navbar navbar-default">
+	<a class="navbar-brand mr-5" href="/">
+		<img src="" class="img-fluid" width="40" height="40" alt="TBZ-SM">
+	</a>
+</nav>
+<nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm fixed-top">
 	<div class="container">
 		<a class="navbar-brand mr-5" href="/">
 			<img src="<?= url('media/logo.png'); ?>" class="img-fluid" width="40" height="40" alt="TBZ-SM">

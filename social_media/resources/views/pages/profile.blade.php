@@ -4,7 +4,7 @@
     <div class="row my-5">
         <div class="col-md-3">
             <!-- edit profile -->
-            <div class="card">
+            <div class="card position-fixed">
                 <div class="card-body">
                     <h4>Edit profile</h4>
                     <form method="post" action="">
@@ -65,7 +65,7 @@
         </div>
         <div class="col-md-3">
             <!-- friends -->
-            <div class="card">
+            <div class="card position-fixed">
                 <div class="card-body">
                     <h4>Friends</h4>
                     @include('inc.friendlist')
