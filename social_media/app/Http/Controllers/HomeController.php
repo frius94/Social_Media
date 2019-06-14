@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Contribution;
+use App\Post;
 use App\Person_has_person;
 use App\User;
 use Illuminate\Http\Request;
@@ -29,19 +29,19 @@ class HomeController extends Controller
     public function index()
     {
         //Get all contributions from friends of logged in user.
-        $contributions = Contribution::whereIn('people_id', function ($query) {
+        $posts = Post::whereIn('people_id', function ($query) {
             $query->select('person2')->from('person_has_people')->where('person1', Auth::user()->id);
         })->get();
 
         //Get the name of the author of the contribution and put it into array
-        $contributionUsers = [];
-        foreach ($contributions as $contribution) {
-            $contributionUsers[] = User::select('firstname', 'lastname')->where('id', $contribution->people_id)->get();
+        $postUsers = [];
+        foreach ($posts as $post) {
+            $contributionUsers[] = User::select('firstname', 'lastname')->where('id', $post->people_id)->get();
         }
 
         return view('home')
-            ->with('contributions', $contributions)
-            ->with('contributionUsers', $contributionUsers)
+            ->with('posts', $posts)
+            ->with('postUsers', $postUsers)
             ->with('profilePicture', Auth::user()->profile_picture);
     }
 }

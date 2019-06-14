@@ -18,7 +18,7 @@
 
             <!-- timeline -->
             <div>
-                @include('inc.contributions')
+                @include('inc.posts')
             </div>
             <!-- ./timeline -->
         </div>
