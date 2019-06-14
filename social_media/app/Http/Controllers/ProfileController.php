@@ -49,7 +49,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         //Get all contributions from logged in user.
-        $posts = Post::where('people_id', Auth::user()->id)->get();
+        $posts = Post::where('people_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
 
         $user = User::find($id);
 

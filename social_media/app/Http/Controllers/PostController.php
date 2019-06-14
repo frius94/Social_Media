@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -26,15 +28,29 @@ class PostController extends Controller
 		//
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
+     */
 	public function store(Request $request)
 	{
-		//
+
+	    $this->validate($request, [
+	       'postText' => 'required'
+        ]);
+
+	    $post = new Post;
+	    $post->text      = $request->input('postText');
+	    $post->people_id = Auth::user()->id;
+	    $post->save();
+
+	    $re = '/profile/' . Auth::user()->id;
+
+	    return redirect($re)->with('success', 'Post created');
+
 	}
 
 	/**

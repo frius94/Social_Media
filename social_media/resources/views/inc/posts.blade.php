@@ -1,7 +1,7 @@
 @if(count($posts) > 0)
     @for($i = 0; $i < count($posts); $i++)
         <!-- post -->
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-body">
                 <p>{{$posts[$i]->text}}</p>
             </div>
