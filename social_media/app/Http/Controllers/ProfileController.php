@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Contribution;
+use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -51,20 +51,20 @@ class ProfileController extends Controller
     public function show($id)
     {
         //Get all contributions from logged in user.
-        $contributions = Contribution::where('people_id', Auth::user()->id)->get();
+        $posts = Post::where('people_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
 
         $user = User::find($id);
 
         //Get the name of the author of the contribution and put it into array
-        $contributionUsers = [];
-        foreach ($contributions as $contribution) {
-            $contributionUsers[] = User::select('firstname', 'lastname')->where('id', $contribution->people_id)->get();
+        $postUsers = [];
+        foreach ($posts as $post) {
+            $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->people_id)->get();
         }
 
         return view('pages.profile')
             ->with('user', $user)
-            ->with('contributions', $contributions)
-            ->with('contributionUsers', $contributionUsers);
+            ->with('posts', $posts)
+            ->with('postUsers', $postUsers);
     }
 
     /**
