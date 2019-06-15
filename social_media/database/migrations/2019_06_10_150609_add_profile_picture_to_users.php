@@ -14,7 +14,7 @@ class AddProfilePictureToUsers extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->string('profile_picture')->default('/media/default_profilePicture.jpg');
+            $table->string('profile_picture')->default('default_profilePicture.jpg');
         });
     }
 
