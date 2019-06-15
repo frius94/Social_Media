@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4>Edit profile</h4>
-                    <form method="post" action="">
+                    <form method="post" action="{{action('ProfileController@update')}}" accept-charset="UTF-8" enctype="multipart/form-data">
                         <div class="form-group">
                             <input class="form-control" type="text" name="status" placeholder="Status" value="">
                         </div>
@@ -15,6 +15,13 @@
                         <div class="form-group">
                             <input class="form-control" type="text" name="location" placeholder="Location" value="">
                         </div>
+
+                        <div class="form-group">
+                            <label>Change profile picture</label>
+                            <input type="file" class="form-control-file" name="picture">
+                        </div>
+
+                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
 
                         <div class="form-group">
                             <input class="btn btn-primary" type="submit" name="update_profile" value="Save">
@@ -28,12 +35,13 @@
             <!-- user profile -->
             <div class="media">
                 <div class="media-left">
-                    <img src="{{$user->profile_picture}}" class="media-object"
+                    <img src="/storage/profile_pictures/{{$user->profile_picture}}" class="media-object"
                          style="width: 128px; height: auto;">
                 </div>
                 <div class="media-body ml-4">
                     <h2 class="media-heading">{{$user->firstname . ' ' . $user->lastname}}</h2>
                     <p>Status: {{$user->status}}</p>
+                    <p>Location: {{$user->location}}</p>
                 </div>
             </div>
             <!-- user profile -->

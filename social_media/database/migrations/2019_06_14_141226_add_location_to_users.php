@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddProfilePictureToUsers extends Migration
+class AddLocationToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddProfilePictureToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function ($table) {
-            $table->string('profile_picture')->default('/media/default_profilePicture.jpg');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('location')->default('');
         });
     }
 
@@ -25,8 +25,8 @@ class AddProfilePictureToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function ($table) {
-            $table->dropColumn('profile_picture');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('location');
         });
     }
 }

@@ -11,12 +11,16 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', 'PagesController@index');
 
-Route::get('/profile/{id}', 'ProfileController@show');
+Route::get('/profile/{id}', 'ProfileController@show')->name('profile');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
 Route::get('/removeFriend/{id1}/{id2}', 'Person_has_personController@destroy');
+
+Route::post('/profile/', 'ProfileController@update')->name('updateProfile');
