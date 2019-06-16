@@ -25,29 +25,18 @@
             <!-- user profile -->
 
             <hr>
+        @if(auth()->user()->getAuthIdentifier() == $user->id)
+            @include('inc.createPost')
+        @endif
 
-            <div class="card mb-3">
-                @include('inc.messages')
-                <form action="{{action('PostController@store')}}" method="POST">
+        <!-- timeline -->
+            @if(auth()->user()->getAuthIdentifier() == $user->id)
+                <div>
+                    @include('inc.posts')
+                </div>
+        @endif
 
-                    <div class="card-body">
-                        <p>Create New Post:</p>
-                        <textarea class="form-control" type="text" name="postText"></textarea>
-                    </div>
-
-                    <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
-
-                    <div class="card-footer">
-                        <input type="submit" value="Post" class="btn btn-primary" style="width: 8em"/>
-                    </div>
-                </form>
-            </div>
-
-            <!-- timeline -->
-            <div>
-                @include('inc.posts')
-            </div>
-            <!-- ./timeline -->
+        <!-- ./timeline -->
         </div>
         <div class="col-md-3">
             <!-- friends -->

@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\Person_has_person;
 use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller
 {
@@ -39,9 +38,21 @@ class HomeController extends Controller
             $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->people_id)->get();
         }
 
+        $searchQuery = Input::get('search');
+        $searchResult = '';
+        if ($searchQuery != null) {
+            $searchResult = DB::table('Users')->select('id')->whereRaw(DB::raw("concat(firstname, ' ', lastname) LIKE '%$searchQuery%'"))->get();
+            if (empty($searchResult->toArray())) {
+                $searchResult = "No person found";
+            } else {
+                return redirect()->route('profile', ['id' => $searchResult[0]->id]);
+            }
+        }
+
         return view('home')
             ->with('posts', $posts)
             ->with('postUsers', $postUsers)
-            ->with('profilePicture', Auth::user()->profile_picture);
+            ->with('profilePicture', Auth::user()->profile_picture)
+            ->with('searchResult', $searchResult);
     }
 }

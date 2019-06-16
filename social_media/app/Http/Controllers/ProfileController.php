@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\ValidationException;
 
 class ProfileController extends Controller
@@ -61,10 +63,23 @@ class ProfileController extends Controller
             $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->people_id)->get();
         }
 
+        $searchQuery = Input::get('search');
+        $searchResult = '';
+        if ($searchQuery != null) {
+            $searchResult = DB::table('Users')->select('id')->whereRaw(DB::raw("concat(firstname, ' ', lastname) LIKE '%$searchQuery%'"))->get();
+
+            if (empty($searchResult->toArray())) {
+                $searchResult = "No person found";
+            } else {
+                return redirect()->route('profile', ['id' => $searchResult[0]->id]);
+            }
+        }
+
         return view('pages.profile')
             ->with('user', $user)
             ->with('posts', $posts)
-            ->with('postUsers', $postUsers);
+            ->with('postUsers', $postUsers)
+            ->with('searchResult', $searchResult);
     }
 
     /**
