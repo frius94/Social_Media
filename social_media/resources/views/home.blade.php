@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <img src="{{$profilePicture}}" class="media-object" style="width: 100%;">
+                    <img src="/storage/profile_pictures/{{$profilePicture}}" class="media-object" style="width: 100%;">
                     <h4 class="mt-3">{{Auth::user()->firstname .' '.Auth::user()->lastname}}</h4>
 
                 </div>

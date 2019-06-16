@@ -9,25 +9,40 @@
 
     <title>{{ config('app.name', 'TBZ-SM') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        @include('inc.navbar')
-        <!-- main -->
-        <main class="container">
-            @yield('content')
-        </main>
-        <!-- ./main -->
-    </div>
+<div id="app">
+@include('inc.navbar')
+<!-- main -->
+    <main class="container">
+        @yield('content')
+    </main>
+    <!-- ./main -->
+</div>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+<script type="text/javascript">
+    var path = "{{ route('autocomplete') }}";
+
+    $('#search').typeahead({
+        dataType: 'json',
+        source: function (query, process) {
+            return $.get(path, {query: query}, function (data) {
+                return process(data);
+            });
+        }
+    });
+</script>
+<!-- Scripts -->
 </body>
 <!-- footer -->
 <footer class="page-footer font-small blue pt-4">

@@ -36,7 +36,7 @@ class HomeController extends Controller
         //Get the name of the author of the contribution and put it into array
         $postUsers = [];
         foreach ($posts as $post) {
-            $contributionUsers[] = User::select('firstname', 'lastname')->where('id', $post->people_id)->get();
+            $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->people_id)->get();
         }
 
         return view('home')
