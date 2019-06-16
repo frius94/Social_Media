@@ -19,6 +19,7 @@
                     <h2 class="media-heading">{{$user->firstname . ' ' . $user->lastname}}</h2>
                     <p>Status: {{$user->status}}</p>
                     <p>Location: {{$user->location}}</p>
+                    @include('inc.addfriend')
                 </div>
             </div>
             <!-- user profile -->

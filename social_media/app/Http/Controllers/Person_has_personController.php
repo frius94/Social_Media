@@ -27,15 +27,19 @@ class Person_has_personController extends Controller
 		//
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param $id
+     * @return void
+     */
+	public function store($id)
 	{
-		//
+	    $personHasPerson = new Person_has_person();
+	    $personHasPerson->person1 = auth()->user()->getAuthIdentifier();
+	    $personHasPerson->person2 = $id;
+	    $personHasPerson->save();
+	    return redirect()->route('profile', ['id' => $id]);
 	}
 
 	/**
@@ -82,6 +86,6 @@ class Person_has_personController extends Controller
 	public function destroy($id1, $id2)
 	{
 	    Person_has_person::where('person1', $id1)->where('person2', $id2)->delete();
-	    return redirect('home');
+        return redirect()->route('profile', ['id' => $id2]);
 	}
 }

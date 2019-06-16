@@ -28,3 +28,5 @@ Route::resource('post', 'PostController');
 Route::post('/profile/', 'ProfileController@update')->name('updateProfile');
 
 Route::get('autocomplete', 'AutoCompleteController@search')->name('autocomplete');
+
+Route::get('addFriend/{id}', 'Person_has_personController@store')->name('addFriend');

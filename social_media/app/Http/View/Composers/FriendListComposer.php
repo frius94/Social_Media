@@ -19,11 +19,15 @@ class FriendListComposer
     {
         $friends = [];
         $friendsID = Person_has_person::select('person2')->where('person1', Auth::user()->id)->get();
+        $ids = [];
 
         foreach ($friendsID as $friendID) {
             $friends[] = User::find($friendID->person2);
+            $ids[] = User::find($friendID->person2)->id;
         }
 
-        $view->with('friends', $friends);
+        $view
+            ->with('friends', $friends)
+            ->with('friendsID', $ids);
     }
 }
