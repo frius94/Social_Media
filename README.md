@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/frius94/social_media/badge)](https://www.codefactor.io/repository/github/frius94/social_media)
+
 # Social_Media
 Project for M133
 
