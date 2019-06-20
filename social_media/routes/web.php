@@ -25,6 +25,8 @@ Route::get('/removeFriend/{id1}/{id2}', 'Person_has_personController@destroy');
 
 Route::resource('post', 'PostController');
 
+Route::post('/post/{id}/delete', 'PostController@destroy');
+
 Route::post('/profile/', 'ProfileController@update')->name('updateProfile');
 
 Route::get('autocomplete', 'AutoCompleteController@search')->name('autocomplete');
