@@ -94,7 +94,20 @@ class PostController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id)
-	{
-		//
+    {
+
+        $re = '/profile/' . Auth::user()->id;
+
+        $post = Post::find($id);
+
+        if ($post->people_id == Auth::user()->id) {
+
+            $post->delete();
+
+            return redirect($re)->with('success', 'Post deleted');
+        }
+
+        return redirect($re)->with('error', 'Post does not Belong to you.');
+
 	}
 }
