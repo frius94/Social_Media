@@ -25,6 +25,9 @@ Route::get('/removeFriend/{id1}/{id2}', 'Person_has_personController@destroy');
 
 Route::resource('post', 'PostController');
 
+Route::resource('comment', 'CommentController');
+
+
 Route::post('/post/{id}/delete', 'PostController@destroy');
 
 Route::post('/profile/', 'ProfileController@update')->name('updateProfile');
