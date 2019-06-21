@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
@@ -55,12 +56,18 @@ class ProfileController extends Controller
         //Get all contributions from logged in user.
         $posts = Post::where('people_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
 
+
         $user = User::find($id);
 
         //Get the name of the author of the contribution and put it into array
         $postUsers = [];
+        $comments  = [];
+
+
         foreach ($posts as $post) {
             $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->people_id)->get();
+            $comment  [] = Comment::where('post_id', $post->id)->get();
+            $comments [] = $comment;
         }
 
         $searchQuery = Input::get('search');
@@ -79,7 +86,8 @@ class ProfileController extends Controller
             ->with('user', $user)
             ->with('posts', $posts)
             ->with('postUsers', $postUsers)
-            ->with('searchResult', $searchResult);
+            ->with('searchResult', $searchResult)
+            ->with('comments', $comments);
     }
 
     /**

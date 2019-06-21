@@ -1,7 +1,7 @@
 @if(count($posts) > 0)
     @for($i = 0; $i < count($posts); $i++)
         <!-- post -->
-        <div class="card mb-3">
+        <div class="card mb-4">
             <div class="card-body">
                 <form action="/post/{{$posts[$i]->id}}/delete" method="post">
                     @csrf
@@ -9,24 +9,55 @@
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </form>
-                <p>{{$posts[$i]->text}}</p>
+                <p>{!! nl2br($posts[$i]->text, false) !!}</p>
             </div>
             <div class="card-footer">
                 <span>posted {{$posts[$i]->created_at}} by {{$postUsers[$i][0]['firstname'] . ' ' . $postUsers[$i][0]['lastname']}}</span>
             </div>
 
 
+            <button class="btn btn-primary mb-2" type="button" data-toggle="collapse" data-target="{{'#collapseComments' . $posts[$i]->id}}" aria-expanded="false">
+                <span><i class="fas fa-comments"></i> Show all Comments</span>
+            </button>
+
             <!-- SHOW ALL COMMENTS -->
+                <div class="container mt-2 collapse" id="{{'collapseComments' . $posts[$i]->id}}">
+
+                    @foreach($comments[$i] as $com)
+
+                        @foreach($com as $comment)
+
+                            <div class="card mb-3" style="max-width: 500px;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        <img src="..." class="card-img" alt="ProfilePic">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+
+                                            <p class="card-text">{!! nl2br($comment->text, false) !!}</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        @endforeach
+                    @endforeach
+
+                </div>
+
 
 
             <div class="container">
-                <button class="btn btn-success mt-1 mb-1" type="button" data-toggle="collapse" data-target="{{'#collapse' . $posts[$i]->id}}" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn btn-success mb-2" type="button" data-toggle="collapse" data-target="{{'#collapse' . $posts[$i]->id}}" aria-expanded="false">
                     <span><i class="fas fa-comment-medical"></i> Add Comment</span>
                 </button>
                 <div class="collapse" id="{{'collapse' . $posts[$i]->id}}">
                     <div class="card mb-3">
                         <form action="{{action('CommentController@store')}}" method="POST">
-
+                            @csrf
                             <div class="card-body">
                                 <p>Create Comment:</p>
                                 <textarea class="form-control" type="text" name="text"></textarea>
