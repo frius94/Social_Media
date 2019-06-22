@@ -23,14 +23,16 @@
             <!-- SHOW ALL COMMENTS -->
                 <div class="container mt-2 collapse" id="{{'collapseComments' . $posts[$i]->id}}">
 
-                    @foreach($comments[$i] as $com)
 
-                        @foreach($com as $comment)
+                    @foreach(App\Post::find($posts[$i]->id)->comments as $comment)
+
+
 
                             <div class="card mb-3" style="max-width: 500px;">
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
-                                        <img src="..." class="card-img" alt="ProfilePic">
+                                        <img src="/storage/profile_pictures/{{App\Comment::find($comment->id)->user->profile_picture}}"
+                                             class="card-img" alt="ProfilePic" style="max-width: 150px; height: auto;">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
@@ -43,7 +45,7 @@
                             </div>
 
 
-                        @endforeach
+
                     @endforeach
 
                 </div>

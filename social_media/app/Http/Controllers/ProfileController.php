@@ -54,20 +54,16 @@ class ProfileController extends Controller
     public function show($id)
     {
         //Get all contributions from logged in user.
-        $posts = Post::where('people_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $posts = Post::where('user_id', $id)->orderBy('created_at', 'desc')->get();
 
 
         $user = User::find($id);
 
         //Get the name of the author of the contribution and put it into array
         $postUsers = [];
-        $comments  = [];
-
 
         foreach ($posts as $post) {
-            $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->people_id)->get();
-            $comment  [] = Comment::where('post_id', $post->id)->get();
-            $comments [] = $comment;
+            $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->user_id)->get();
         }
 
         $searchQuery = Input::get('search');
@@ -86,8 +82,7 @@ class ProfileController extends Controller
             ->with('user', $user)
             ->with('posts', $posts)
             ->with('postUsers', $postUsers)
-            ->with('searchResult', $searchResult)
-            ->with('comments', $comments);
+            ->with('searchResult', $searchResult);
     }
 
     /**
