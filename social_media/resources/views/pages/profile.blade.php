@@ -30,11 +30,11 @@
         @endif
 
         <!-- timeline -->
-            @if(auth()->user()->getAuthIdentifier() == $user->id)
+
                 <div>
                     @include('inc.posts')
                 </div>
-        @endif
+
 
         <!-- ./timeline -->
         </div>
