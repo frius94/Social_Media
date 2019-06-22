@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class CommentController extends Controller
 {
@@ -98,10 +99,23 @@ class CommentController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  String  $URL
+     * @return Redirect
      */
-    public function destroy($id)
+
+    public function destroy($id, $URL)
     {
-        //
+
+        $comment = Comment::find($id);
+        $URL = str_replace("!", "/", $URL);
+
+        if ($comment->user_id == Auth::user()->id) {
+            $comment->delete();
+            return redirect($URL)->with('success', 'Comment deleted');
+        }
+
+        return redirect($URL)->with('error', 'Comment does not Belong to you.');
+
+
     }
 }

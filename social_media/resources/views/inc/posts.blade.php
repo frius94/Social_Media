@@ -41,10 +41,26 @@
                                     <div class="col-md-8">
                                         <div class="card-body">
 
+                                            @if(auth()->user()->getAuthIdentifier() == $comment_User->id)
+                                                <form action="/comment/{{$comment->id}}/{{str_replace("/", "!", url()->current())}}/delete" method="post">
+                                                    @csrf
+
+                                                    <button type="submit" name="DEL" class="btn btn-danger btn-sm float-right">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+
+
+                                                </form>
+                                            @endif
+
                                             <p class="card-text">{!! nl2br($comment->text, false) !!}</p>
                                             <p class="card-text"><small class="text-muted">commented {{$comment->created_at}} by {{$comment_User->firstname . ' ' . $comment_User->lastname}}</small></p>
                                         </div>
                                     </div>
+
+
+
+
                                 </div>
                             </div>
 

@@ -30,6 +30,8 @@ Route::resource('comment', 'CommentController');
 
 Route::post('/post/{id}/delete', 'PostController@destroy');
 
+Route::post('/comment/{id}/{URL}/delete', 'CommentController@destroy');
+
 Route::post('/profile/', 'ProfileController@update')->name('updateProfile');
 
 Route::get('autocomplete', 'AutoCompleteController@search')->name('autocomplete');

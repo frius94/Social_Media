@@ -1,5 +1,4 @@
 <div class="card mb-3">
-    @include('inc.messages')
     <form action="{{action('PostController@store')}}" method="POST">
 
         <div class="card-body">

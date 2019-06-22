@@ -131,7 +131,7 @@ class ProfileController extends Controller
         }
         $user->save();
 
-        return redirect()->route('profile', ['id' => 1]);
+        return redirect()->route('profile', ['id' => $user->id]);
     }
 
     /**

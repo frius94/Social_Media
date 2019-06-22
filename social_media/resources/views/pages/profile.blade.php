@@ -31,9 +31,10 @@
 
         <!-- timeline -->
 
-                <div>
-                    @include('inc.posts')
-                </div>
+            <div>
+                @include('inc.messages')
+                @include('inc.posts')
+            </div>
 
 
         <!-- ./timeline -->
