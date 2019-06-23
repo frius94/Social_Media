@@ -27,8 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //Get all contributions from friends of logged in user.
-        $posts = Post::whereIn('people_id', function ($query) {
+        //Get all posts from friends of logged in user.
+        $posts = Post::whereIn('user_id', function ($query) {
             $query->select('person2')->from('person_has_people')->where('person1', Auth::user()->id);
         })->get();
 
@@ -53,6 +53,7 @@ class HomeController extends Controller
             ->with('posts', $posts)
             ->with('postUsers', $postUsers)
             ->with('profilePicture', Auth::user()->profile_picture)
-            ->with('searchResult', $searchResult);
+            ->with('searchResult', $searchResult)
+            ->with('user', Auth::user());
     }
 }
