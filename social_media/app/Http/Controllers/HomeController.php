@@ -35,7 +35,7 @@ class HomeController extends Controller
         //Get the name of the author of the contribution and put it into array
         $postUsers = [];
         foreach ($posts as $post) {
-            $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->people_id)->get();
+            $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->user_id)->get();
         }
 
         $searchQuery = Input::get('search');

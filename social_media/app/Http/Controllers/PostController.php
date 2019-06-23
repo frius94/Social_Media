@@ -44,7 +44,7 @@ class PostController extends Controller
 
 	    $post = new Post;
 	    $post->text      = $request->input('postText');
-	    $post->people_id = Auth::user()->id;
+	    $post->user_id   = Auth::user()->id;
 	    $post->save();
 
 	    $re = '/profile/' . Auth::user()->id;
@@ -98,7 +98,7 @@ class PostController extends Controller
         $re = '/profile/' . Auth::user()->id;
         $post = Post::find($id);
 
-        if ($post->people_id == Auth::user()->id) {
+        if ($post->user_id == Auth::user()->id) {
             $post->delete();
             return redirect($re)->with('success', 'Post deleted');
         }

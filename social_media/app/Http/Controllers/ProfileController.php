@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
@@ -53,14 +54,16 @@ class ProfileController extends Controller
     public function show($id)
     {
         //Get all contributions from logged in user.
-        $posts = Post::where('people_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $posts = Post::where('user_id', $id)->orderBy('created_at', 'desc')->get();
+
 
         $user = User::find($id);
 
         //Get the name of the author of the contribution and put it into array
         $postUsers = [];
+
         foreach ($posts as $post) {
-            $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->people_id)->get();
+            $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->user_id)->get();
         }
 
         $searchQuery = Input::get('search');
@@ -128,7 +131,7 @@ class ProfileController extends Controller
         }
         $user->save();
 
-        return redirect()->route('profile', ['id' => 1]);
+        return redirect()->route('profile', ['id' => $user->id]);
     }
 
     /**
