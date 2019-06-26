@@ -38,6 +38,7 @@ class Person_has_personController extends Controller
 	    $personHasPerson = new Person_has_person();
 	    $personHasPerson->person1 = auth()->user()->getAuthIdentifier();
 	    $personHasPerson->person2 = $id;
+	    $personHasPerson->friendAccepted = 0;
 	    $personHasPerson->save();
 	    return redirect()->route('profile', ['id' => $id]);
 	}

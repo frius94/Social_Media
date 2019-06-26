@@ -35,14 +35,25 @@
                 @include('inc.messages')
                 @include('inc.posts')
             </div>
-
+        </div>
 
         <!-- ./timeline -->
-        </div>
+
         <div class="col-md-3">
+
             <!-- friends -->
             <div class="card position-fixed">
                 <div class="card-body">
+
+                    @if(auth()->user()->getAuthIdentifier() == $user->id)
+
+                        <div class="card">
+                            @include('inc.friendRequest')
+                        </div>
+
+
+                    @endif
+
                     <h4>Friends</h4>
                     @include('inc.friendlist')
                 </div>
