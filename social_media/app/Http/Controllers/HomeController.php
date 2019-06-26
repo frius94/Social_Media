@@ -32,8 +32,8 @@ class HomeController extends Controller
     {
         //Get all posts from friends of logged in user.
         $posts = Post::whereIn('user_id', function ($query) {
-            $query->select('person2')->from('person_has_people')->where('person1', Auth::user()->id);
-        })->get();
+            $query->select('person2')->from('person_has_people')->where('person1', Auth::user()->id)->orWhere('person2', Auth::user()->id);
+        })->orderBy('created_at', 'desc')->get();
 
         //Get the name of the author of the post and put it into array
         $postUsers = [];
