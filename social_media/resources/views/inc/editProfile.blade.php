@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" id="editProfileCard">
     <div class="card-body">
         <h4>Edit profile</h4>
         <form method="post" action="{{action('ProfileController@update')}}" accept-charset="UTF-8" enctype="multipart/form-data">

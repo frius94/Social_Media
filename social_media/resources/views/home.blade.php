@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row my-5">
-        <div class="col-md-3">
+        <div class="col-lg-3 mb-5">
             <!-- edit profile -->
             <div class="card">
                 <div class="card-body">
@@ -14,7 +14,7 @@
             </div>
             <!-- ./edit profile -->
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6" id="homeFeedCol">
 
             <!-- timeline -->
             <div>
@@ -22,7 +22,7 @@
             </div>
             <!-- ./timeline -->
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3" id="homeFriendListCol">
             <!-- friends -->
             <div class="card">
                 <div class="card-body">
