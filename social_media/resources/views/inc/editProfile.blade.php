@@ -11,8 +11,11 @@
             </div>
 
             <div class="form-group">
-                <label>Change profile picture</label>
-                <input type="file" class="form-control-file" name="picture">
+                <label class="btn btn-outline-secondary">
+                <input type="file" class="" name="picture" hidden>
+                    <i class="fas fa-portrait fa-lg"></i>
+                    Change profile picture
+                </label>
             </div>
 
             <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
