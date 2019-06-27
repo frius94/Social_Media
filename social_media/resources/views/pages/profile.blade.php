@@ -36,7 +36,6 @@
                 @include('inc.messages')
                 @include('inc.posts')
             </div>
-        </div>
 
         <!-- ./timeline -->
         </div>
