@@ -24,7 +24,7 @@
         </div>
         <div class="col-lg-3" id="homeFriendListCol">
             <!-- friends -->
-            <div class="card">
+            <div class="card" id="friendListCard">
                 <div class="card-body">
                     <h4>Friends</h4>
                     @include('inc.friendlist')

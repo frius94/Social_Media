@@ -20,14 +20,12 @@
             @if(!$posts[$i]->comments->isEmpty())
                 <button class="btn btn-primary mb-2" type="button" data-toggle="collapse"
                         data-target="{{'#collapseComments' . $posts[$i]->id}}" aria-expanded="false">
-                    <span><i class="fas fa-comments"></i> Show all Comments</span>
+                    <span><i class="fas fa-comments fa-lg"></i> Show all Comments</span>
                 </button>
         @endif
 
-
         <!-- SHOW ALL COMMENTS -->
-            <div class="container mt-2 collapse" id="{{'collapseComments' . $posts[$i]->id}}">
-
+            <div class="mx-auto mt-2 collapse" id="{{'collapseComments' . $posts[$i]->id}}">
 
             @foreach(App\Post::find($posts[$i]->id)->comments as $comment)
 
@@ -64,52 +62,45 @@
                                     </p>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-
                 @endforeach
-
             </div>
 
+            <div class="d-flex my-2">
+                <button class="btn btn-success ml-4" type="button" data-toggle="collapse"
+                        data-target="{{'#collapse' . $posts[$i]->id}}" aria-expanded="false">
+                    <span><i class="fas fa-comment-medical fa-lg"></i> Add Comment</span>
+                </button>
+                <button class="btn btn-info ml-auto mr-4" id="like{{$posts[$i]->id}}"
+                        onclick="likePost({{$posts[$i]->id}})"
+                        @if($likes[$i] === 0)
+                        data-toggle="tooltip" data-placement="top" title="Nobody likes this">
+                    @elseif($likes[$i] === 1)
+                        data-toggle="tooltip" data-placement="top" title="{{$likes[$i]}} Person likes this">
+                    @else
+                        data-toggle="tooltip" data-placement="top" title="{{$likes[$i]}} People like this">
+                    @endif
+                    <i class="far fa-thumbs-up fa-lg" id="thumbs{{$posts[$i]->id}}"></i>
+                </button>
+            </div>
+            <div class="collapse" id="{{'collapse' . $posts[$i]->id}}">
+                <div class="card mb-3">
+                    <form action="{{action('CommentController@store')}}" method="POST">
+                        @csrf
+                        <div class="card-body">
+                            <p>Create Comment:</p>
+                            <textarea class="form-control" type="text" name="text"></textarea>
+                        </div>
 
-            <div class="container">
-                <div class="row my-2">
-                    <button class="btn btn-success" type="button" data-toggle="collapse"
-                            data-target="{{'#collapse' . $posts[$i]->id}}" aria-expanded="false">
-                        <span><i class="fas fa-comment-medical"></i> Add Comment</span>
-                    </button>
-                    <button class="btn btn-info ml-auto" id="like{{$posts[$i]->id}}"
-                            onclick="likePost({{$posts[$i]->id}})"
-                            @if($likes[$i] === 0)
-                            data-toggle="tooltip" data-placement="top" title="Nobody likes this">
-                        @elseif($likes[$i] === 1)
-                            data-toggle="tooltip" data-placement="top" title="{{$likes[$i]}} Person likes this">
-                        @else
-                            data-toggle="tooltip" data-placement="top" title="{{$likes[$i]}} People like this">
-                        @endif
-                        <i class="far fa-thumbs-up fa-lg" id="thumbs{{$posts[$i]->id}}"></i>
-                    </button>
-                </div>
-                <div class="collapse" id="{{'collapse' . $posts[$i]->id}}">
-                    <div class="card mb-3">
-                        <form action="{{action('CommentController@store')}}" method="POST">
-                            @csrf
-                            <div class="card-body">
-                                <p>Create Comment:</p>
-                                <textarea class="form-control" type="text" name="text"></textarea>
-                            </div>
+                        <input name="URL" type="hidden" value="{{url()->current()}}"/>
+                        <input name="post_id" type="hidden" value="{{$posts[$i]->id}}"/>
+                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
 
-                            <input name="URL" type="hidden" value="{{url()->current()}}"/>
-                            <input name="post_id" type="hidden" value="{{$posts[$i]->id}}"/>
-                            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
-
-                            <div class="card-footer">
-                                <input type="submit" value="Post" class="btn btn-primary" style="width: 8em"/>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="card-footer">
+                            <input type="submit" value="Post" class="btn btn-primary" style="width: 8em"/>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
