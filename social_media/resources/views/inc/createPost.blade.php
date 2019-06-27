@@ -1,8 +1,11 @@
-<div class="card mb-3">
+<button type="button" data-toggle="collapse" data-target="#collapseCreatePost" aria-expanded="false" class="btn btn-primary mb-2 btn-block">
+    <i class="fas fa-pen fa-lg"></i>
+    Create Post
+</button>
+<div class="card mb-3 collapse" id="collapseCreatePost">
     <form action="{{action('PostController@store')}}" method="POST">
 
         <div class="card-body">
-            <p>Create New Post:</p>
             <textarea class="form-control" type="text" name="postText"></textarea>
         </div>
 
