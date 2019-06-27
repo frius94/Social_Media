@@ -39,3 +39,5 @@ Route::get('autocomplete', 'AutoCompleteController@search')->name('autocomplete'
 Route::get('addFriend/{id}', 'Person_has_personController@store')->name('addFriend');
 
 Route::post('profile/addFriend/{id}/{accept}', 'Person_has_personController@acceptFriend');
+
+Route::post('likePost', 'LikePostController@storeAndDelete');

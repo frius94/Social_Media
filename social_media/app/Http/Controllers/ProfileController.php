@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\LikePost;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
@@ -53,19 +54,20 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //Get all contributions from logged in user.
+        //Get all posts from logged in user.
         $posts = Post::where('user_id', $id)->orderBy('created_at', 'desc')->get();
 
 
         $user = User::find($id);
 
-        //Get the name of the author of the contribution and put it into array
+        //Get the name of the author of the post and put it into array
         $postUsers = [];
 
         foreach ($posts as $post) {
             $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->user_id)->get();
         }
 
+        //Search for user in search bar
         $searchQuery = Input::get('search');
         $searchResult = '';
         if ($searchQuery != null) {
@@ -78,11 +80,18 @@ class ProfileController extends Controller
             }
         }
 
+        //Count likes of posts
+        $countLikes = [];
+        foreach ($posts as $post) {
+            $countLikes[] = LikePost::where('post_id', $post->id)->count();
+        }
+
         return view('pages.profile')
             ->with('user', $user)
             ->with('posts', $posts)
             ->with('postUsers', $postUsers)
-            ->with('searchResult', $searchResult);
+            ->with('searchResult', $searchResult)
+            ->with('likes', $countLikes);
     }
 
     /**

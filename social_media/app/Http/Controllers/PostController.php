@@ -102,6 +102,6 @@ class PostController extends Controller
             $post->delete();
             return redirect($re)->with('success', 'Post deleted');
         }
-        return redirect($re)->with('error', 'Post does not Belong to you.');
+        return redirect($re)->with('error', 'Post does not belong to you.');
 	}
 }

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\LikePost;
 use App\Post;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -32,12 +35,13 @@ class HomeController extends Controller
             $query->select('person2')->from('person_has_people')->where('person1', Auth::user()->id)->orWhere('person2', Auth::user()->id);
         })->orderBy('created_at', 'desc')->get();
 
-        //Get the name of the author of the contribution and put it into array
+        //Get the name of the author of the post and put it into array
         $postUsers = [];
         foreach ($posts as $post) {
             $postUsers[] = User::select('firstname', 'lastname')->where('id', $post->user_id)->get();
         }
 
+        //Search for user in search bar
         $searchQuery = Input::get('search');
         $searchResult = '';
         if ($searchQuery != null) {
@@ -49,11 +53,18 @@ class HomeController extends Controller
             }
         }
 
+        //Count likes of posts
+        $countLikes = [];
+        foreach ($posts as $post) {
+            $countLikes[] = LikePost::where('post_id', $post->id)->count();
+        }
+
         return view('home')
             ->with('posts', $posts)
             ->with('postUsers', $postUsers)
             ->with('profilePicture', Auth::user()->profile_picture)
             ->with('searchResult', $searchResult)
-            ->with('user', Auth::user());
+            ->with('user', Auth::user())
+            ->with('likes', $countLikes);
     }
 }

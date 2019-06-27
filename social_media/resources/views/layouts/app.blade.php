@@ -41,6 +41,33 @@
             });
         }
     });
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    function likePost(id) {
+
+        $.ajax({
+            type: 'POST',
+            url: '/likePost',
+            data: {id: id},
+            success: function (data) {
+            }
+        });
+        if ($('#thumbs' + id).hasClass('fas')) {
+            $('#thumbs' + id).removeClass('fas').addClass('far');
+        } else {
+            $('#thumbs' + id).removeClass('far').addClass('fas');
+        }
+        location.reload();
+    }
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 <!-- Scripts -->
 </body>

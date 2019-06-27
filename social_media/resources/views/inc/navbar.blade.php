@@ -24,7 +24,7 @@
                         <a class="nav-link" href="/profile/{{Auth::user()->id}}">Profile</a>
                     </li>
                 </ul>
-                <form class="form-inline mx-5">
+                <form class="form-inline mx-md-5">
                     <input class="typeahead form-control" data-provide="typeahead" type="search" id="search"
                            placeholder="Search" aria-label="Search"
                            size="30" name="search" autocomplete="off">

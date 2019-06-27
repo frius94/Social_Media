@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
     <div class="row my-5">
-        <div class="col-md-3">
+        <div class="col-lg-3" id="editProfileCol">
             <!-- edit profile -->
         @if(auth()->user()->getAuthIdentifier() == $user->id)
             @include('inc.editProfile')
         @endif
         <!-- ./edit profile -->
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6" id="profileFeedCol">
             <!-- user profile -->
             <div class="media">
                 <div class="media-left">
@@ -39,11 +39,10 @@
         </div>
 
         <!-- ./timeline -->
-
-        <div class="col-md-3">
-
+        </div>
+        <div class="col-lg-3 mb-5" id="profileFriendListCol">
             <!-- friends -->
-            <div class="card position-fixed">
+            <div class="card" id="friendListCard">
                 <div class="card-body">
                     <h4>Friends</h4>
                     @include('inc.friendlist')
