@@ -26,6 +26,7 @@
 
             <hr>
         @if(auth()->user()->getAuthIdentifier() == $user->id)
+            @include('inc.friendRequest')
             @include('inc.createPost')
         @endif
 
@@ -44,16 +45,6 @@
             <!-- friends -->
             <div class="card position-fixed">
                 <div class="card-body">
-
-                    @if(auth()->user()->getAuthIdentifier() == $user->id)
-
-                        <div class="card">
-                            @include('inc.friendRequest')
-                        </div>
-
-
-                    @endif
-
                     <h4>Friends</h4>
                     @include('inc.friendlist')
                 </div>
