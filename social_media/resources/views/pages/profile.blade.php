@@ -26,6 +26,7 @@
 
             <hr>
         @if(auth()->user()->getAuthIdentifier() == $user->id)
+            @include('inc.friendRequest')
             @include('inc.createPost')
         @endif
 
@@ -35,7 +36,7 @@
                 @include('inc.messages')
                 @include('inc.posts')
             </div>
-
+        </div>
 
         <!-- ./timeline -->
         </div>

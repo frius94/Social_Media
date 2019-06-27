@@ -18,16 +18,41 @@ class FriendListComposer
     function compose(View $view)
     {
         $friends = [];
-        $friendsID = Person_has_person::select('person2')->where('person1', Auth::user()->id)->get();
+        $friendRequests = [];
+
+	    $friendsID1 = Person_has_person::select('person1')->where('person2', Auth::user()->id)->where('friendAccepted', true)->get();
+        $friendsID2 = Person_has_person::select('person2')->where('person1', Auth::user()->id)->where('friendAccepted', true)->get();
+
+	    $friendRequestID1 = Person_has_person::select('person1')->where('person2', Auth::user()->id)->where('friendAccepted', false)->get();
+	    $friendRequestID2 = Person_has_person::select('person2')->where('person1', Auth::user()->id)->where('friendAccepted', false)->get();
+
+
+
         $ids = [];
 
-        foreach ($friendsID as $friendID) {
+	    foreach ($friendsID1 as $friendID) {
+		    $friends[] = User::find($friendID->person1);
+		    $ids[]     = User::find($friendID->person1)->id;
+	    }
+
+        foreach ($friendsID2 as $friendID) {
             $friends[] = User::find($friendID->person2);
-            $ids[] = User::find($friendID->person2)->id;
+            $ids[]     = User::find($friendID->person2)->id;
         }
+
+
+	    foreach ($friendRequestID1 as $friendID) {
+		    $friendRequests[] = User::find($friendID->person1);
+	    }
+	    foreach ($friendRequestID2 as $friendID) {
+		    $friendRequests[] = User::find($friendID->person2);
+	    }
+
 
         $view
             ->with('friends', $friends)
-            ->with('friendsID', $ids);
+            ->with('friendsID', $ids)
+            ->with('friendRequests', $friendRequests);
+
     }
 }
