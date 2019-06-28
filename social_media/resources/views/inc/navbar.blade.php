@@ -29,8 +29,8 @@
                            placeholder="Search" aria-label="Search"
                            size="30" name="search" autocomplete="off">
                 </form>
-            @if(isset($searchResult))
-                <p class="mb-0 mr-auto">{{$searchResult}}</p>
+            @if(isset($response))
+                <p class="mb-0 mr-auto">{{$response}}</p>
                 @endif
         @endif
 

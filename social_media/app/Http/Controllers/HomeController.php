@@ -43,13 +43,18 @@ class HomeController extends Controller
 
         //Search for user in search bar
         $searchQuery = Input::get('search');
+        $response = '';
         $searchResult = '';
         if ($searchQuery != null) {
-            $searchResult = DB::table('Users')->select('id')->whereRaw(DB::raw("concat(firstname, ' ', lastname) LIKE '%$searchQuery%'"))->get();
+            $searchResult = DB::table('Users')
+                ->select('id', 'firstname', 'lastname', 'profile_picture', 'birthDate', 'cities_id', 'schoolClasses_id', 'email')
+                ->whereRaw(DB::raw("concat(firstname, ' ', lastname) LIKE '%$searchQuery%'"))->get();
             if (empty($searchResult->toArray())) {
-                $searchResult = "No person found";
-            } else {
+                $response = "No person found";
+            } elseif(count($searchResult) === 1){
                 return redirect()->route('profile', ['id' => $searchResult[0]->id]);
+            } else {
+                return view('pages.search', ['searchResult' => $searchResult]);
             }
         }
 
@@ -63,7 +68,7 @@ class HomeController extends Controller
             ->with('posts', $posts)
             ->with('postUsers', $postUsers)
             ->with('profilePicture', Auth::user()->profile_picture)
-            ->with('searchResult', $searchResult)
+            ->with('response', $response)
             ->with('user', Auth::user())
             ->with('likes', $countLikes);
     }
