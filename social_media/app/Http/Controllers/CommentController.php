@@ -19,6 +19,16 @@ use Illuminate\Support\Facades\Redirect;
 class CommentController extends Controller
 {
 
+    /*
+    |--------------------------------------------------------------------------
+    | Comment Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the
+    |
+    */
+
+
     /**
      * Store a newly created resource in storage.
      *

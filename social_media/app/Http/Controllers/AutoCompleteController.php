@@ -16,6 +16,17 @@ use Illuminate\Http\Request;
 
 class AutoCompleteController extends Controller
 {
+
+    /*
+    |--------------------------------------------------------------------------
+    | AutoComplete Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the
+    |
+    */
+
+
     /**
      * Search for person in db and return the matching people
      * @param Request $request

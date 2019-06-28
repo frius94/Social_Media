@@ -18,6 +18,16 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
 
+    /*
+    |--------------------------------------------------------------------------
+    | Post Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the
+    |
+    */
+
+
     /**
      * Store a newly created resource in storage.
      *

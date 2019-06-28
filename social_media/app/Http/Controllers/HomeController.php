@@ -23,6 +23,16 @@ use Illuminate\Support\Facades\Log;
 class HomeController extends Controller
 {
 
+    /*
+    |--------------------------------------------------------------------------
+    | Home Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the
+    |
+    */
+
+
     /**
      * Show the application dashboard.
      *

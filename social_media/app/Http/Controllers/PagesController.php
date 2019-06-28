@@ -18,7 +18,18 @@ use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
-	/**
+
+    /*
+    |--------------------------------------------------------------------------
+    | Pages Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the requirement of User Authentication to
+    | view all Pages.
+    |
+    */
+
+    /**
 	 * Create a new controller instance.
 	 *
 	 * @return void

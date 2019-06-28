@@ -18,6 +18,17 @@ use Illuminate\View\View;
 
 class FriendListComposer
 {
+
+    /*
+    |--------------------------------------------------------------------------
+    | AutoComplete Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the
+    |
+    */
+
+
     /**
      * Bind friend names to the view.
      *

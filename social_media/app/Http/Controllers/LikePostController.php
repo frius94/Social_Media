@@ -20,6 +20,16 @@ use Illuminate\Support\Facades\Log;
 class LikePostController extends Controller
 {
 
+    /*
+    |--------------------------------------------------------------------------
+    | LikePost Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the
+    |
+    */
+
+
     /**
      * Store a newly created resource in storage.
      *

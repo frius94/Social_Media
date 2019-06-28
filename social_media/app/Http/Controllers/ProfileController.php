@@ -23,6 +23,16 @@ use Illuminate\Validation\ValidationException;
 class ProfileController extends Controller
 {
 
+    /*
+    |--------------------------------------------------------------------------
+    | Profile Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the
+    |
+    */
+
+
     /**
      * Display the specified resource.
      *

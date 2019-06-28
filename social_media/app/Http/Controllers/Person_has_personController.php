@@ -18,6 +18,16 @@ use Illuminate\Support\Facades\Auth;
 class Person_has_personController extends Controller
 {
 
+    /*
+    |--------------------------------------------------------------------------
+    | Person Has Person Relation (FriendList) Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the
+    |
+    */
+
+
     /**
      * Store a newly created resource in storage.
      *
