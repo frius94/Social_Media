@@ -11,17 +11,17 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 
+/**
+ *
+ * @author Umut Savas
+ * @author Christopher O'Connor
+ * @version 1.0
+ * @since 2019/06/28
+ *
+ */
+
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.

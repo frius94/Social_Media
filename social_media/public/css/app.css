@@ -16953,3 +16953,49 @@ readers do not read off random characters that represent icons */
   font-family: "Font Awesome 5 Brands";
 }
 
+@media (max-width: 992px) {
+  #profileFeedCol {
+    -webkit-box-ordinal-group: 2;
+            order: 1;
+    margin-bottom: 2rem;
+  }
+
+  #editProfileCol {
+    -webkit-box-ordinal-group: 4;
+            order: 3;
+  }
+
+  #profileFriendListCol {
+    -webkit-box-ordinal-group: 3;
+            order: 2;
+  }
+
+  #homeFeedCol {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 992px) {
+  #editProfileCard {
+    position: fixed;
+  }
+
+  #friendListCard {
+    position: fixed;
+  }
+}
+
+@media (min-width: 1200px) {
+  #editProfileCard {
+    position: fixed;
+  }
+
+  #friendListCard {
+    position: fixed;
+  }
+}
+
+.pictureHover:hover {
+  opacity: 0.5;
+}
+

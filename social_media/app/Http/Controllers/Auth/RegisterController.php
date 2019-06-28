@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+/**
+ *
+ * @author Umut Savas
+ * @author Christopher O'Connor
+ * @version 1.0
+ * @since 2019/06/28
+ *
+ */
+
 class RegisterController extends Controller
 {
     /*

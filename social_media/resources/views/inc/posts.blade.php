@@ -29,19 +29,17 @@
 
             @foreach(App\Post::find($posts[$i]->id)->comments as $comment)
 
-                <!-- IGNORE $comment not Defined (It works 100% Functional -->
-                    <?php $comment_User = App\Comment::find($comment->id)->user ?>
 
                     <div class="card mb-3" style="max-width: 500px;">
                         <div class="row no-gutters">
                             <div class="col-md-4">
-                                <img src="/storage/profile_pictures/{{$comment_User->profile_picture}}"
+                                <img src="/storage/profile_pictures/{{ App\Comment::find($comment->id)->user->profile_picture }}"
                                      class="card-img" alt="ProfilePic" style="max-width: 150px; height: auto;">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
 
-                                    @if(auth()->user()->getAuthIdentifier() == $comment_User->id)
+                                    @if(auth()->user()->getAuthIdentifier() == App\Comment::find($comment->id)->user->id)
                                         <form
                                             action="/comment/{{$comment->id}}/{{str_replace("/", "!", url()->current())}}/delete"
                                             method="post">
@@ -58,7 +56,7 @@
                                     <p class="card-text">{!! nl2br($comment->text, false) !!}</p>
                                     <p class="card-text">
                                         <small class="text-muted">commented {{$comment->created_at}}
-                                            by {{$comment_User->firstname . ' ' . $comment_User->lastname}}</small>
+                                            by {{App\Comment::find($comment->id)->user->firstname . ' ' . App\Comment::find($comment->id)->user->lastname}}</small>
                                     </p>
                                 </div>
                             </div>

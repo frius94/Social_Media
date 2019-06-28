@@ -7,6 +7,15 @@ use App\Person_has_person;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
+/**
+ *
+ * @author Umut Savas
+ * @author Christopher O'Connor
+ * @version 1.0
+ * @since 2019/06/28
+ *
+ */
+
 class FriendListComposer
 {
     /**

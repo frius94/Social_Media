@@ -7,6 +7,15 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ *
+ * @author Umut Savas
+ * @author Christopher O'Connor
+ * @version 1.0
+ * @since 2019/06/28
+ *
+ */
+
 class PagesController extends Controller
 {
 	/**
