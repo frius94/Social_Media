@@ -16,14 +16,41 @@ use Illuminate\Database\Eloquent\Model;
 class City extends Model
 {
 
+	/*
+	|--------------------------------------------------------------------------
+	| City Model
+	|--------------------------------------------------------------------------
+	|
+	| This Model contains all Data representing a City.
+	|
+	|
+	*/
+
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
 	protected $fillable = [
 		'plz', 'name',
 	];
 
+	/**
+	 * Create RelationShip to App\User Model
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
     public function user() {
     	return $this->belongsTo('App\User');
     }
 
+	/**
+	 * If City already Exists, Create RelationShip to new Registered User.
+	 * Else create First the City and then Bind it.
+	 *
+	 * @param array $data
+	 * @return City
+	 */
     public static function registerUser(array $data) {
 
 	    $city = City::where([['plz', $data['plz']], ['name', $data['city']]])->get();

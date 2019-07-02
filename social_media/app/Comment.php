@@ -15,15 +15,41 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $fillable = [
+
+	/*
+	|--------------------------------------------------------------------------
+	| Comment Model
+	|--------------------------------------------------------------------------
+	|
+	| This Model contains all Data representing a Comment.
+	|
+	|
+	*/
+
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = [
         'post_id', 'user_id', 'text',
     ];
 
 
+	/**
+	 * Create RelationShip to App\Post Model
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
     public function post() {
         return $this->belongsTo('App\Post');
     }
 
+	/**
+	 * Create RelationShip to App\User Model
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
     public function user() {
         return $this->belongsTo('App\User');
     }

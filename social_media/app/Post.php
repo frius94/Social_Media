@@ -15,14 +15,40 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = [
+
+	/*
+	|--------------------------------------------------------------------------
+	| Post Model
+	|--------------------------------------------------------------------------
+	|
+	| This Model contains all Data representing a Post.
+	|
+	|
+	*/
+
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = [
         'text', 'user_id',
     ];
 
+	/**
+	 * Create RelationShip to App\User Model
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
     public function user() {
         return $this->belongsTo('App\User');
     }
 
+	/**
+	 * Create RelationShip to App\Comment Model
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
     public function comments() {
         return $this->hasMany('App\Comment');
     }

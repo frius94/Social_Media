@@ -23,13 +23,14 @@ class PostController extends Controller
     | Post Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles the
+    | This controller handles the Creation and Destruction of App\Post.
+    |
     |
     */
 
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Post in storage.
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -54,7 +55,7 @@ class PostController extends Controller
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Remove the specified Post from storage.
 	 *
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response

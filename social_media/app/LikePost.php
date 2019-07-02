@@ -15,7 +15,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class LikePost extends Model
 {
-    protected $fillable = [
+
+	/*
+	|--------------------------------------------------------------------------
+	| LikePost Model
+	|--------------------------------------------------------------------------
+	|
+	| This controller handles the
+	|
+	|
+	*/
+
+
+	protected $fillable = [
         'post_id', 'user_id',
     ];
 
