@@ -50,10 +50,8 @@ class FriendListComposer
 
 	    /*
 		 * Get all FriendRequests from Current LoggedIn User and Target.
-		 * Because Current LoggedIn User can be person1 or person2 both cases need to be looked at.
 		 */
 	    $friendRequestID1 = Person_has_person::select('person1')->where('person2', Auth::user()->id)->where('friendAccepted', false)->get();
-	    $friendRequestID2 = Person_has_person::select('person2')->where('person1', Auth::user()->id)->where('friendAccepted', false)->get();
 
 
 
@@ -79,10 +77,7 @@ class FriendListComposer
 	    foreach ($friendRequestID1 as $friendID) {
 		    $friendRequests[] = User::find($friendID->person1);
 	    }
-	    foreach ($friendRequestID2 as $friendID) {
-		    $friendRequests[] = User::find($friendID->person2);
-	    }
-
+	    
 
         $view
             ->with('friends', $friends)
