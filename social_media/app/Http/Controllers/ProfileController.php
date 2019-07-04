@@ -59,7 +59,7 @@ class ProfileController extends Controller
         $response = '';
         $searchResult = '';
         if ($searchQuery != null) {
-            $searchResult = DB::table('Users')
+            $searchResult = DB::table('users')
                 ->select('id', 'firstname', 'lastname', 'profile_picture', 'birthDate', 'cities_id', 'schoolClasses_id', 'email')
                 ->whereRaw(DB::raw("concat(firstname, ' ', lastname) LIKE '%$searchQuery%'"))->get();
             if (empty($searchResult->toArray())) {
