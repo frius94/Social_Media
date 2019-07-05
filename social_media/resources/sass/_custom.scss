@@ -1,0 +1,54 @@
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 992px) {
+    #profileFeedCol {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    #editProfileCol {
+        order: 3;
+    }
+
+    #profileFriendListCol {
+        order: 2;
+    }
+
+    #homeFeedCol {
+        margin-bottom: 2rem;
+
+    }
+    #homeFriendListCol {
+
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    #editProfileCard {
+        position: fixed;
+    }
+
+    #friendListCard {
+        position: fixed;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    #editProfileCard {
+        position: fixed;
+    }
+
+    #friendListCard {
+        position: fixed;
+    }
+}
+
+.pictureHover:hover {
+    opacity: 0.5;
+}
